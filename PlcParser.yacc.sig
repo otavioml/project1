@@ -8,6 +8,8 @@ val NAME: (string) *  'a * 'a -> (svalue,'a) token
 val SEMIC:  'a * 'a -> (svalue,'a) token
 val RPAR:  'a * 'a -> (svalue,'a) token
 val LPAR:  'a * 'a -> (svalue,'a) token
+val LESSEQUAL:  'a * 'a -> (svalue,'a) token
+val LESS:  'a * 'a -> (svalue,'a) token
 val EQ:  'a * 'a -> (svalue,'a) token
 val DIV:  'a * 'a -> (svalue,'a) token
 val MULT:  'a * 'a -> (svalue,'a) token

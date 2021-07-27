@@ -6,7 +6,7 @@
 
 
 %term VAR
-    | PLUS | MINUS | MULT | DIV | EQ
+    | PLUS | MINUS | MULT | DIV | EQ | LESS | LESSEQUAL
     | LPAR | RPAR
     | SEMIC
     | NAME of string | CINT of int
@@ -15,7 +15,7 @@
 %nonterm Prog of expr | Expr of expr | AtomExpr of expr | Const of expr
 
 %right SEMIC
-%left EQ PLUS MINUS MULT DIV
+%left EQ PLUS MINUS MULT DIV LESS LESSEQUAL 
 
 %eop EOF
 
@@ -34,6 +34,8 @@ Expr : AtomExpr (AtomExpr)
     | Expr MULT Expr (Prim2("*", Expr1, Expr2))
     | Expr DIV Expr (Prim2("/", Expr1, Expr2))
     | Expr EQ Expr (Prim2("=", Expr1, Expr2))
+    | Expr LESS Expr (Prim2("<", Expr1, Expr2))
+    | MINUS Expr (Prim1("-", Expr1))
 
 AtomExpr : Const (Const)
     | NAME (Var(NAME))

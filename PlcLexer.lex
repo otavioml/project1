@@ -46,9 +46,9 @@ identifier=[a-zA-Z_][a-zA-Z_0-9]*;
 %%
 
 \n => (lineNumber := !lineNumber + 1; lex());
-(whitespace)+ => (lex());
-(digit)+ => (CINT(strToInt(yytext), yypos, yypos));
-(identifier) => (keyword(yytext, yypos, yypos));
+{whitespace}+ => (lex());
+{digit}+ => (CINT(strToInt(yytext), yypos, yypos));
+{identifier} => (keyword(yytext, yypos, yypos));
 "+" => (PLUS(yypos, yypos));
 "-" => (MINUS(yypos, yypos));
 "*" => (MULT(yypos, yypos));
@@ -57,5 +57,6 @@ identifier=[a-zA-Z_][a-zA-Z_0-9]*;
 ";" => (SEMIC(yypos, yypos));
 "(" => (LPAR(yypos, yypos));
 ")" => (RPAR(yypos, yypos));
+"<" => (LESS(yypos, yypos));
 . => (error("\n *** Lexer error: character invalid ***\n "); raise
 Fail("Lexer error: character invalid" ^yytext));
