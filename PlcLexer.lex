@@ -58,6 +58,8 @@ identifier=[a-zA-Z_][a-zA-Z_0-9]*;
 "(" => (LPAR(yypos, yypos));
 ")" => (RPAR(yypos, yypos));
 "<" => (LESS(yypos, yypos));
+"<=" => (LESSEQUAL(yypos, yypos));
 "!" => (NEGATION(yypos, yypos));
+"&&" => (LOGICAND(yypos, yypos));
 . => (error("\n *** Lexer error: character invalid ***\n "); raise
 Fail("Lexer error: character invalid" ^yytext));
